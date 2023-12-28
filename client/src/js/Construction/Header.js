@@ -15,14 +15,14 @@ export default function Header() {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    <img src={logo} style={{width:"100px"}}/>
+                    <img src={logo} style={{width:"100px"}} alt="로고이미지"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse>
-                    <Nav.Link as={Link} to="/movies">MovieList</Nav.Link>
-                    <Nav.Link as={Link} to="/todos">Todo</Nav.Link>
-                    <Nav.Link as={Link} to="/boards">Board</Nav.Link>
-                    <NavDropdown title="Games" id="basic-nav-dropdown">
+                    <Nav.Link as={Link} to="/movies" className="ms-3">MovieList</Nav.Link>
+                    <Nav.Link as={Link} to="/todos" className="ms-3">Todo</Nav.Link>
+                    <Nav.Link as={Link} to="/boards" className="ms-3">Board</Nav.Link>
+                    <NavDropdown title="Games" id="basic-nav-dropdown" className="ms-3">
                         <NavDropdown.Item as={Link} to="/game/numberguessing">
                             NumberGuessingGame
                         </NavDropdown.Item>
@@ -30,6 +30,8 @@ export default function Header() {
                             Quiz
                         </NavDropdown.Item>
                     </NavDropdown>
+                    <Nav.Link as={Link} to="/weather" className="ms-3">Weather</Nav.Link>
+                    <Nav.Link as={Link} to="/music" className="ms-3">Music</Nav.Link>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

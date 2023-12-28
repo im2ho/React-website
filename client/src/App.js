@@ -11,6 +11,8 @@ import CreatePage from "./js/Board/CreatePage";
 import NumberGuessingGame from "./js/Game/NumberGuessing";
 import Quiz from "./js/Game/Quiz"; 
 import Todo from "./js/TodoList";
+import Weather from "./js/weather/WeatherSearch";
+import MusicPlayer from "./js/Music/MusicPlayer_ver2"
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path='/todos' element={<Todo />} />
             <Route path='/boards' element={<BoardList />} />
             <Route path="/boards/create" element={<CreatePage/>}/>
+            <Route path="/weather" element={<Weather/>} />
+            <Route path="/music" element={<MusicPlayer/>} />
           </Routes>
         </div>
         <Footer />

@@ -5,7 +5,10 @@ import CreatePage from "./CreatePage";
 
 export default function Board(){
 
-    //const Home = () => <div>Home</div>;
+    //
+    
+
+    //게시글 목록
     const [actions, setAction] = useState([]);
 
     //생성
@@ -20,7 +23,7 @@ export default function Board(){
 
     return(
             <div>
-               <BoardList actions={actions} deleteAction={deleteAction}/>
+               <BoardList actions={actions} deleteAction={deleteAction} />
                <CreatePage actions={actions} addAction={addAction} />
             </div>
     )
