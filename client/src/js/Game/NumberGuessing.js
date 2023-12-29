@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ProgressBar, Form, Button } from 'react-bootstrap';
 
 export default function App() {
 
@@ -23,8 +24,14 @@ export default function App() {
         setUserGuess(e.target.value);
     };
 
+    const [progress, setProgress] = useState(0);
+
     //useEffect를 활용해서 게임 횟수 제한
     useEffect(()=>{
+        //5번의 기회 > 기회 감소
+        //100에서부터 감소하는 표현식 100 - ((5-attempts)/5)*100
+        const newProgress = ((5 - attempts) / 5) * 100;
+        setProgress(newProgress);
         //횟수가 끝났을 경우
         if(attempts === 0){
             setMessage(`틀렸습니다! 행운의 숫자는 ${targetNumber}였습니다 메롱 아쉽지만 다음 기회를 노려보세요`);
@@ -32,6 +39,7 @@ export default function App() {
             setTargetNumber(randomNumber());
             setAttempts(5);
             setGuessHistory([]);
+            setProgress(0);
         }
     },[attempts, targetNumber])
 
@@ -57,6 +65,7 @@ export default function App() {
                 setTargetNumber(randomNumber());
                 setAttempts(5);
                 setGuessHistory([]);
+                setProgress(0);
             } else {
                 //숫자가 틀릴 때마다 횟수 차람
                 const remainAttempts = attempts - 1;
@@ -72,7 +81,8 @@ export default function App() {
         <div>
             <h1>행운의 숫자</h1>
             <p>1부터 50사이의 숫자를 맞춰보세요</p>
-            <form onSubmit={inputSubmit}>
+            <ProgressBar now={progress} label={`${progress}%`} /><br />
+            <Form onSubmit={inputSubmit}>
                 <input 
                     className="w-25"
                     type='number'
@@ -83,8 +93,8 @@ export default function App() {
                     max="100"
                     required
                 />
-                <button type="submit" className="ms-2">제출</button>
-            </form>
+                <Button type="submit" className="ms-2">제출</Button>
+            </Form>
             <div>
                 <p>남은 기회 : {attempts}</p>
                 <p>입력한 숫자 : {guessHistory.join(',')}</p>

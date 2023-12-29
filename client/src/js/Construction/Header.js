@@ -29,9 +29,13 @@ export default function Header() {
                         <NavDropdown.Item as={Link} to="/game/quiz">
                             Quiz
                         </NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/game/fastclick">
+                            FastClicker
+                        </NavDropdown.Item>
                     </NavDropdown>
                     <Nav.Link as={Link} to="/weather" className="ms-3">Weather</Nav.Link>
                     <Nav.Link as={Link} to="/music" className="ms-3">Music</Nav.Link>
+                    <Nav.Link as={Link} to="/emoji" className="ms-3">Emojis</Nav.Link>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

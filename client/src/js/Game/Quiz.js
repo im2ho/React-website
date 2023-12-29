@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Quiz = () => {
@@ -108,6 +109,11 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
 
+  //progress바가 100%되는 값을 넣어주는 함수
+  const progress = (currentQuestion / questions.length) * 100;
+  //currentQuestion : 현재 사용자가 답한 질문의 번호를 나타내는 상태
+  //question.length : 전체 질문 개수
+
   const AnswerButtonClick = (selectedOption) => {
     if (selectedOption === questions[currentQuestion].correctAnswer) {
       setScore(score + 1);
@@ -141,18 +147,21 @@ const Quiz = () => {
           </div>
         </div>
       ) : (
-        <div className='card p-2'>
-          <div className='card-body'>
-            <h2 className='card-title'>질문 : {currentQuestion + 1}</h2>
-            <p className='card-text'>{questions[currentQuestion].question}</p>
-          </div>
+        <div>
+          <ProgressBar now={progress} label={`${progress.toFixed(2)} %`} />
+          <div className='card p-2'>
+            <div className='card-body'>
+              <h2 className='card-title'>질문 : {currentQuestion + 1}</h2>
+              <p className='card-text'>{questions[currentQuestion].question}</p>
+            </div>
 
-          <div className='mt-1'>
-            {questions[currentQuestion].options.map((option) => (
-              <button className='btn btn-outline-primary ms-2' key={option} onClick={() => AnswerButtonClick(option)}>
-                {option}
-              </button>
-            ))}
+            <div className='mt-1'>
+              {questions[currentQuestion].options.map((option) => (
+                <button className='btn btn-outline-primary ms-2' key={option} onClick={() => AnswerButtonClick(option)}>
+                  {option}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}

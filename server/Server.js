@@ -15,7 +15,7 @@ const PORT = 5001;
 //json파일로 DB 보이기
 app.use(express.json());
 
-//GET : 모든 경로에서 백엔트에 오는 요청을 사용할 수 있도록 허용
+//GET : 모든 경로에서 백엔드에 오는 요청을 사용할 수 있도록 허용
 app.use(cors());
 
 //POST : DB에 전달받을 url 주소도 허용
